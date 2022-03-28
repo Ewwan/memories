@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Container,
   AppBar,
@@ -6,12 +6,12 @@ import {
   Grow,
   Grid,
   Toolbar,
-} from '@material-ui/core';
+} from "@material-ui/core";
 
-import Posts from './components/Posts/Posts';
-import Form from './components/Form/Form';
-import memories from './images/memories.png';
-import useStyles from './styles';
+import Posts from "./components/Posts/Posts";
+import Form from "./components/Form/Form";
+import memories from "./images/memories.png";
+import useStyles from "./styles";
 
 const App = () => {
   const [currentId, setCurrentId] = useState(0);
@@ -27,7 +27,7 @@ const App = () => {
             noWrap
             component='div'
             align='center'
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+            sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
           >
             Memories
           </Typography>
@@ -35,7 +35,7 @@ const App = () => {
             src={memories}
             className={classes.image}
             alt='memories'
-            height='60'
+            height='100'
           />
         </Toolbar>
       </AppBar>
