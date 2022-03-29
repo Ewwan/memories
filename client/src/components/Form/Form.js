@@ -59,6 +59,7 @@ const Form = ({ currentId, setCurrentId }) => {
           {currentId ? `Editing "${post.title}"` : 'Creating a Memory'}
         </Typography>
         <TextField
+          id='creator-outlined'
           name='creator'
           variant='outlined'
           label='Creator'
@@ -74,9 +75,7 @@ const Form = ({ currentId, setCurrentId }) => {
           label='Title'
           fullWidth
           value={postData.title}
-          onChange={(e) =>
-            setPostData({ ...postData, creator: e.target.value })
-          }
+          onChange={(e) => setPostData({ ...postData, title: e.target.value })}
         />
         <TextField
           name='message'
@@ -86,7 +85,7 @@ const Form = ({ currentId, setCurrentId }) => {
           multilinerows={4}
           value={postData.message}
           onChange={(e) =>
-            setPostData({ ...postData, creator: e.target.value })
+            setPostData({ ...postData, message: e.target.value })
           }
         />
         <TextField
@@ -96,7 +95,7 @@ const Form = ({ currentId, setCurrentId }) => {
           fullWidth
           value={postData.tags}
           onChange={(e) =>
-            setPostData({ ...postData, creator: e.target.value.split(',') })
+            setPostData({ ...postData, tags: e.target.value.split(',') })
           }
         />
         <div className={classes.fileInput}>
