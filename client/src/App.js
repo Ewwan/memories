@@ -6,7 +6,7 @@ import {
   Grow,
   Grid,
   Toolbar,
-} from '@material-ui/core';
+} from '@mui/material';
 
 import Posts from './components/Posts/Posts';
 import Form from './components/Form/Form';

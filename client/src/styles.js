@@ -1,19 +1,19 @@
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@mui/styles';
 
 export default makeStyles(() => ({
   appBar: {
     borderRadius: 15,
-    margin: "30px 0",
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
+    margin: '30px 0',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   heading: {
     fontFamily: `Cursive, "Brush Script MT", "Lucida Handwriting"`,
-    color: "rgba(0, 102, 153, 1)",
+    color: 'rgba(0, 102, 153, 1)',
   },
   image: {
-    marginLeft: "15px",
+    marginLeft: '15px',
   },
 }));
