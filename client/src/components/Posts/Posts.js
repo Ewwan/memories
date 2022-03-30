@@ -15,7 +15,7 @@ const Posts = ({ setCurrentId }) => {
     <Grid
       className={classes.container}
       container
-      alighItems='stretch'
+      alignItems='stretch'
       spacing={3}
     >
       {posts.map((post) => (
