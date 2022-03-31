@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, Button, Typography, Paper } from '@mui/material';
+import {
+  TextField,
+  Button,
+  Stack,
+  Typography,
+  Accordion,
+  AccordionSummary,
+} from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import FileBase from 'react-file-base64';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import useStyles from './formStyles';
 import { createPost, updatePost } from '../../actions/posts';
@@ -17,6 +25,7 @@ const Form = ({ currentId, setCurrentId }) => {
   const post = useSelector((state) =>
     currentId ? state.posts.find((message) => message._id === currentId) : null
   );
+  const [expanded, setExpanded] = useState(false);
   const dispatch = useDispatch();
   const classes = useStyles();
 
@@ -35,6 +44,10 @@ const Form = ({ currentId, setCurrentId }) => {
     });
   };
 
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -48,16 +61,27 @@ const Form = ({ currentId, setCurrentId }) => {
   };
 
   return (
-    <Paper className={classes.paper}>
+    <Accordion
+      expanded={expanded === 'panel1'}
+      onChange={handleChange('panel1')}
+      className={classes.paper}
+      TransitionProps={{ unmountOnExit: true }}
+    >
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        aria-controls='panel1bh-content'
+        id='panel1bh-header'
+      >
+        <Typography variant='h6'>
+          {currentId ? `Editing "${post.title}"` : 'Creating a Memory'}
+        </Typography>
+      </AccordionSummary>
       <form
         autoComplete='off'
         noValidate
         className={`${classes.root} ${classes.form}`}
         onSubmit={handleSubmit}
       >
-        <Typography variant='h6'>
-          {currentId ? `Editing "${post.title}"` : 'Creating a Memory'}
-        </Typography>
         <TextField
           id='creator-outlined'
           name='creator'
@@ -107,27 +131,34 @@ const Form = ({ currentId, setCurrentId }) => {
             }
           />
         </div>
-        <Button
-          className={classes.buttonSubmit}
-          variant='contained'
-          color='primary'
-          size='large'
-          type='submit'
-          fullWidth
+        <Stack
+          direction='column'
+          spacing={1}
+          alignItems='stretch'
+          sx={{ width: '100%' }}
         >
-          Submit
-        </Button>
-        <Button
-          variant='contained'
-          color='secondary'
-          size='small'
-          onClick={clear}
-          fullWidth
-        >
-          Clear
-        </Button>
+          <Button
+            // className={classes.buttonSubmit}
+            variant='contained'
+            color='primary'
+            size='large'
+            type='submit'
+            fullWidth
+          >
+            Submit
+          </Button>
+          <Button
+            variant='contained'
+            color='error'
+            size='small'
+            onClick={clear}
+            fullWidth
+          >
+            Clear
+          </Button>
+        </Stack>
       </form>
-    </Paper>
+    </Accordion>
   );
 };
 

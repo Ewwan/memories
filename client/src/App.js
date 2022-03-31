@@ -48,6 +48,9 @@ const App = () => {
       </AppBar>
       <Grow in>
         <Container>
+          <Grid item xs={12} sm={4}>
+            <Form currentId={currentId} setCurrentId={setCurrentId} />
+          </Grid>
           <Grid
             container
             justify='space-between'
@@ -56,9 +59,6 @@ const App = () => {
           >
             <Grid item xs={12} sm={7}>
               <Posts setCurrentId={setCurrentId} />
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <Form currentId={currentId} setCurrentId={setCurrentId} />
             </Grid>
           </Grid>
         </Container>
